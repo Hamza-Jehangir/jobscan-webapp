@@ -1,0 +1,9 @@
+apiVersion: 1
+providers:
+  - name: JobScan
+    folder: ""
+    type: file
+    updateIntervalSeconds: 30
+    allowUiUpdates: true
+    options:
+      path: /home/runner/workspace/observability/grafana/dashboards

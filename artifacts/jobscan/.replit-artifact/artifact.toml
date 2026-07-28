@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "JobScan"
+version = "1.0.0"
+id = "artifacts/jobscan"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18339
+
+[services.development]
+run = "pnpm --filter @workspace/jobscan run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/jobscan", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/jobscan/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18339"
+BASE_PATH = "/"
